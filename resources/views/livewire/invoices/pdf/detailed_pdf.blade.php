@@ -31,7 +31,7 @@
         }
 
         .invoice-header {
-            border-bottom: 2px solid #00a4e0;
+            border-bottom: 2px solid #18477e;
             padding-bottom: 10px;
             margin-bottom: 20px;
             grid-column: span 2;
@@ -40,7 +40,7 @@
 
         .invoice-header h1 {
             margin: 0;
-            color: #00a4e0;
+            color: #18477e;
         }
 
         .invoice-info-table {
@@ -81,7 +81,7 @@
         }
 
         .invoice-table th {
-            background: #00a4e0;
+            background: #18477e;
             color: #fff;
         }
 
@@ -91,7 +91,7 @@
         }
 
         .invoice-footer {
-            border-top: 2px solid #00a4e0;
+            border-top: 2px solid #18477e;
             padding-top: 10px;
             margin-top: 20px;
             grid-column: span 2;

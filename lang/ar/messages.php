@@ -82,7 +82,7 @@ return [
     'dist_panel' => 'شاشة التوزيع',
     'enter_comment' => 'اكتب تعليق',
     'date' => 'التاريخ',
-    'technician' => 'المصنع',
+    'technician' => 'الفني / المقاول',
     'supervisor' => 'المراقب',
     'unassigned' => 'غير معين',
     'no_orders' => 'لا يوجد طلبات',
