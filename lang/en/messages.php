@@ -212,6 +212,7 @@ return [
     'invoice_created_successfully' => 'Invoice Created Successfully',
     'invoices' => 'Invoices',
     'invoice_number' => 'Invoice No.',
+    'invoice_information' => 'Invoice Information',
     'amount' => 'Amount',
     'payment_status' => 'Payment Status',
     'paid_amount' => 'Paid Amount',

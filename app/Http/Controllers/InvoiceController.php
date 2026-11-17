@@ -21,6 +21,29 @@ use Mpdf\Mpdf;
 class InvoiceController extends Controller
 {
 
+    /**
+     * Build an mPDF instance using the bundled Cairo font (the app's UI font),
+     * so Arabic and Latin text in the PDFs match the design.
+     */
+    private function makePdf(array $margins): Mpdf
+    {
+        $defaultConfig = (new \Mpdf\Config\ConfigVariables())->getDefaults();
+        $defaultFontConfig = (new \Mpdf\Config\FontVariables())->getDefaults();
+
+        return new Mpdf($margins + [
+            'fontDir' => array_merge($defaultConfig['fontDir'], [resource_path('fonts')]),
+            'fontdata' => $defaultFontConfig['fontdata'] + [
+                'cairo' => [
+                    'R' => 'Cairo-Regular.ttf',
+                    'B' => 'Cairo-Bold.ttf',
+                    'useOTL' => 0xFF,
+                    'useKashida' => 75,
+                ],
+            ],
+            'default_font' => 'cairo',
+        ]);
+    }
+
     public function index(Request $request)
     {
 
@@ -191,9 +214,9 @@ class InvoiceController extends Controller
         $page_title = 'MD Invoice No.' . $invoice->id;
         $file_name = $page_title . '.pdf';
 
-        $mpdf = new Mpdf([
+        $mpdf = $this->makePdf([
             'margin_top' => 50,
-            'margin_bottom' => 15,
+            'margin_bottom' => 27,
             'margin_left' => 15,
             'margin_right' => 15,
         ]);
@@ -226,11 +249,11 @@ class InvoiceController extends Controller
         $page_title = 'MD Detailed Invoice No.' . $invoice->id;
         $file_name = $page_title . '.pdf';
 
-        $mpdf = new Mpdf([
-            'margin_top' => 50,
-            'margin_bottom' => 15,
-            'margin_left' => 15,
-            'margin_right' => 15,
+        $mpdf = $this->makePdf([
+            'margin_top' => 42,
+            'margin_bottom' => 27,
+            'margin_left' => 8,
+            'margin_right' => 8,
         ]);
         $mpdf->showImageErrors = true;
         $body = view('livewire.invoices.pdf.detailed_pdf', compact('invoice', 'page_title'));
